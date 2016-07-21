@@ -2,13 +2,20 @@
 <tool_dependency>
     <package name="snap" version="0.1.0">
         <install version="0.1.0">
-            <actions>
-                <action type="download_by_url">http://korflab.ucdavis.edu/Software/snap-2013-11-29.tar.gz</action>
-                <action type="shell_command">make</action>
-                <action type="set_environment">
-                    <environment_variable name="ZOE" action="set_to">$INSTALL_DIR</environment_variable>
-                </action>
-            </actions>
+            <actions_group>
+                <actions>
+                    <action type="download_by_url">http://korflab.ucdavis.edu/Software/snap-2013-11-29.tar.gz</action>
+                    <action type="move_directory_files">
+                            <source_directory>.</source_directory>
+                            <destination_directory>$INSTALL_DIR</destination_directory>
+                    </action>
+                    <action type="shell_command">make</action>
+                    <action type="set_environment">
+                        <environment_variable name="ZOE" action="set_to">$INSTALL_DIR/HMM</environment_variable>
+                        <environment_variable name="PATH" action="prepend_to">$INSTALL_DIR</environment_variable>
+                    </action>
+                </actions>
+            </actions_group>
         </install>
         <readme>SNAP is a general purpose gene finding program suitable for both eukaryotic
             and prokaryotic genomes. SNAP is an acroynm for Semi-HMM-based Nucleic Acid
