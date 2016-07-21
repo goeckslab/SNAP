@@ -6,7 +6,7 @@
         <exit_code range="1:" />
     </stdio>
     <command><![CDATA[
-        $__tool_directory__/snap
+        snap
         #if $settings.advanced == "advanced"
         $settings.lcmask
             #if $settings.strand == "true"
