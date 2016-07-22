@@ -1,6 +1,6 @@
-<tool id="snap" name="Semi-HMM-based Nucleic Acid Parser (SNAP)" version="0.1.0">
+<tool id="snap" name="Semi-HMM-based Nucleic Acid Parser (SNAP)" version="1.0">
     <requirements>
-        <requirement type="package" version="0.1.0">snap</requirement>
+        <requirement type="package" version="1.0">snap</requirement>
     </requirements>
     <stdio>
         <exit_code range="1:" />
