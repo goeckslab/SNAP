@@ -19,9 +19,11 @@
         #if $transcripts == "-tx":
         $transcripts "$output3"
         #end if
-        $format
+        -gff
+        -quiet
         $organism
-        "$input1" > "$output1"
+        $input1
+        | python $__tool_directory__/gff2Togff3.py --output $output1
     ]]></command>
     <inputs>
         <param type="data" name="input1" format="dna.gz" />
@@ -53,10 +55,6 @@
             <option value="nGASPr.hmm">nGASPr</option>
             <option value="O.sativa.hmm">O.sativa</option>
             <option value="Os.hmm">Os</option>
-        </param>
-        <param name="format" label="output format setting" type="select" multiple="false" format="text" help="Choose a output format.">
-            <option value="-gff">GFF</option>
-            <option value="-ace">ACE</option>
         </param>
         <param name="proteins" type="select" label="Create FASTA file of proteins">
             <option value="-aa">Yes</option>
@@ -90,14 +88,11 @@
         </conditional>
     </inputs>
     <outputs>
-        <data name="output1" format="gff" label="${tool.name} on ${on_string}: GTF/GFF">
-            <change_format>
-                <when input="format" value="-ace" format="acedb" />
-            </change_format>
+        <data name="output1" format="gff3" label="${tool.name} on ${on_string}: GTF/GFF3">
         </data>
         <data name="output2" format="fasta" label="${tool.name} on ${on_string}: Protein sequence">
             <filter>proteins == "-aa"</filter>
-        </data>/Users/yating/Desktop/gonramp/snap-wrapper/thale.gff
+        </data>
         <data name="output3" format="fasta" label="${tool.name} on ${on_string}: Coding sequence">
             <filter>transcripts == "-tx"</filter>
         </data>
@@ -106,8 +101,7 @@
         <test>
             <param name="input1" value="thale.dna.gz"/>
             <param name="organism" value="At.hmm" />
-            <param name="format" value="-gff" />
-            <output name="output1" file="thale.gff"/>
+            <output name="output1" file="thale.gff3"/>
         </test>
     </tests>
     <help><![CDATA[
