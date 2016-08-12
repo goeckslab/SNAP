@@ -57,12 +57,12 @@
             <option value="Os.hmm">Os</option>
         </param>
         <param name="proteins" type="select" label="Create FASTA file of proteins">
-            <option value="-aa">No</option>
-            <option value="">Yes</option>
+            <option value=>No</option>
+            <option value="-aa">Yes</option>
         </param>
         <param name="transcripts" type="select" label="Create FASTA file of transcripts">
-            <option value="-tx">No</option>
-            <option value="">Yes</option>
+            <option value="">No</option>
+            <option value="-tx">Yes</option>
         </param>
         <conditional name="settings">
             <param name="advanced" type="select" label="Specify advanced parameters">
