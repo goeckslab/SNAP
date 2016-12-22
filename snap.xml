@@ -26,7 +26,7 @@
         | python $__tool_directory__/gff2Togff3.py --output $output1
     ]]></command>
     <inputs>
-        <param type="data" name="input1" format="dna.gz" />
+        <param type="data" name="input1" format="fasta" />
         <param name="organism" label="Model Organism" type="select" multiple="false" format="text" help="Choose a specialised trainingset.">
             <option value="A.gambiae.hmm">A.gambiae</option>
             <option value="A.mellifera.hmm">A.mellifera</option>
